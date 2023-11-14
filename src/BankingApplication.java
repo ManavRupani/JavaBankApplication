@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class BankingApplication {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        BankAccount Bank_1=new BankAccount("Manav","11111");
+        Bank_1.showMenu();
     }
 }
 
@@ -42,8 +43,9 @@ class  BankAccount{
     }
 
     void showMenu(){
-        char option= '\0';
+        char option;
         Scanner sc = new Scanner(System.in);
+
         System.out.println("Welcome Mr."+customerName);
         System.out.println("Your Id is: "+customerID);
         System.out.println();
@@ -56,6 +58,8 @@ class  BankAccount{
             System.out.println("***************************");
             System.out.println("Enter the option");
             System.out.println("***************************");
+            option = sc.next().charAt(0);
+            option= Character.toUpperCase(option);
             switch (option){
                 case 'A':
                     System.out.println("***************************");
@@ -65,9 +69,38 @@ class  BankAccount{
                     break;
 
                 case 'B':
+                    System.out.println("****************************");
+                    System.out.println("Enter the Amount to deposit");
+                    System.out.println("****************************");
+                    int amount = sc.nextInt();
+                    Desposit(amount);
+                    System.out.println();
+                    break;
+
+                case 'C':
+                    System.out.println("****************************");
+                    System.out.println("Enter the Amount to withraw");
+                    System.out.println("****************************");
+                    int amount2 = sc.nextInt();
+                    Widthraw(amount2);
+                    break;
+
+                case'D':
+                    System.out.println("****************************");
+                    getPriviostransaction();
+                    System.out.println("****************************");
+                    System.out.println();
+                    break;
+
+                case 'E':
+                    System.out.println("****************************");
+                    break;
+                default:
+                    System.out.println("Error pls try again");
+                    break;
 
             }
-        }
+        }while (option != 'E');
     }
 
 
